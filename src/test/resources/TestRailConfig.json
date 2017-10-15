@@ -1,0 +1,7 @@
+{
+  "username": "<user_name>",
+  "password": "<password>",
+  "url": "https://<testrail_url>/",
+  "testcaseId": [<test_to_run>],
+  "assignedToId":<user_id>
+}
