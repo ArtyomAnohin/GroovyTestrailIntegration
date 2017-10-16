@@ -6,6 +6,10 @@ import org.openqa.selenium.Keys
 import org.testng.annotations.Listeners
 import org.testng.annotations.Test
 
+/**
+ * Created by artyom on 16.10.17.
+ */
+
 @Listeners(TestRailListeners.class)
 class GoogleTest extends TestRail {
     @Test
@@ -13,14 +17,14 @@ class GoogleTest extends TestRail {
     public void googleTest() {
         Browser.drive {
             go "http://google.com"
-            logger.info("Go to page ")
+            logger.info("Open URL")
             assert title == "Google","Page title not start with"
 
             $("input#lst-ib") << "Geb" + Keys.ENTER
-            logger.info("Send Geb to input")
+            logger.info("Enter search query")
             waitFor { $(".rc > h3 > a") }
 
-            logger.info("Verify results")
+            logger.info("Verify Result list")
             assert $(".rc > h3 > a").size() == 9
             assert $(".rc > h3 > a").first().text() == "Geb - Very Groovy Browser Automation"
 

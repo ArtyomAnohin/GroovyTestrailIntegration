@@ -3,12 +3,16 @@ package com.gurock.testrail
 import org.apache.log4j.AppenderSkeleton
 import org.apache.log4j.spi.LoggingEvent
 
+/**
+ * Created by artyom on 16.10.17.
+ */
+
 class CustomAppender extends AppenderSkeleton {
 
     final List<LoggingEvent> log
 
-    public CustomAppender() {
-        this.name = "CustomAppender";
+    CustomAppender() {
+        this.name = "CustomAppender"
         log = new ArrayList<LoggingEvent>()
     }
 
@@ -26,19 +30,17 @@ class CustomAppender extends AppenderSkeleton {
         return false
     }
 
-    public List<LoggingEvent> getLog() {
+    List<LoggingEvent> getLog() {
         return new ArrayList<LoggingEvent>(log)
     }
 
-    public String getLogAsString() {
-        String dataOut = "--- [Detailed Test Output] ---\n";
-        Iterator<LoggingEvent> it = log.iterator();
-        while (it.hasNext()) {
-            LoggingEvent event = it.next();
-            dataOut = dataOut + event.getRenderedMessage() + "\n";
+    String getLogAsString() {
+        String dataOut = "--- [Detailed Test Output] ---\n"
+        log.each {
+            dataOut += it.getRenderedMessage() + "\n"
         }
-        dataOut = dataOut + "--- [END] ---";
+        dataOut = dataOut + "--- [END] ---"
         log.clear()
-        return dataOut;
+        return dataOut
     }
 }

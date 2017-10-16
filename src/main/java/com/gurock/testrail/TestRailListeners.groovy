@@ -5,6 +5,10 @@ import org.testng.ITestContext
 import org.testng.ITestListener
 import org.testng.ITestResult
 
+/**
+ * Created by artyom on 16.10.17.
+ */
+
 class TestRailListeners extends TestRail implements ITestListener {
 
     @Override
@@ -17,9 +21,7 @@ class TestRailListeners extends TestRail implements ITestListener {
         Map data = new HashMap()
         data.put("status_id", 1)
         data.put("comment", appender.getLogAsString())
-        JSONObject r = (JSONObject) client.sendPost("add_result_for_case/$TestRail.runId/$caseId", data)
-
-        //println appender.getLogAsString()
+        client.sendPost("add_result_for_case/$runId/$caseId", data)
     }
 
     @Override
@@ -31,9 +33,7 @@ class TestRailListeners extends TestRail implements ITestListener {
         Map data = new HashMap()
         data.put("status_id", 5)
         data.put("comment", appender.getLogAsString())
-        JSONObject r = (JSONObject) client.sendPost("add_result_for_case/$TestRail.runId/$caseId", data)
-
-        //println appender.getLogAsString()
+        client.sendPost("add_result_for_case/$runId/$caseId", data)
     }
 
     @Override
@@ -42,9 +42,7 @@ class TestRailListeners extends TestRail implements ITestListener {
         Map data = new HashMap()
         data.put("status_id", 2)
         data.put("comment", "This test worked fine!")
-        JSONObject r = (JSONObject) client.sendPost("add_result_for_case/$TestRail.runId/$caseId", data)
-
-        println appender.getLogAsString()
+        client.sendPost("add_result_for_case/$runId/$caseId", data)
     }
 
     @Override

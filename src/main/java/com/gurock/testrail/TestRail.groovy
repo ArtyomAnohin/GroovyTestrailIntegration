@@ -3,7 +3,6 @@ package com.gurock.testrail
 import groovy.json.JsonSlurper
 import org.apache.log4j.Logger
 import org.json.simple.JSONObject
-import org.testng.Assert
 import org.testng.annotations.AfterClass
 import org.testng.annotations.AfterTest
 import org.testng.annotations.BeforeClass
@@ -11,6 +10,10 @@ import org.testng.annotations.BeforeTest
 
 import java.lang.annotation.Retention
 import java.lang.annotation.RetentionPolicy
+
+/**
+ * Created by artyom on 16.10.17.
+ */
 
 class TestRail {
     static APIClient client
@@ -41,7 +44,6 @@ class TestRail {
 
         appender = new CustomAppender()
         logger.addAppender(appender)
-
     }
 
     @AfterTest
@@ -59,9 +61,8 @@ class TestRail {
      * @return runId - The ID of the test run
      */
     def createTestRun() {
-
         def projectId = 1
-        Map data = new HashMap();
+        Map data = new HashMap()
         data.put("name", "AutoRun " + new Date().format("MM/dd/yyyy - HH:mm:ss", TimeZone.getTimeZone('UTC')))
         data.put("description", "This ia autotest run.")
         data.put("assignedto_id", assignedToId)
@@ -77,8 +78,6 @@ class TestRail {
     def closeTestRun() {
         client.sendPost("/close_run/$runId", "")
     }
-
-
 }
 
 @Retention(RetentionPolicy.RUNTIME)

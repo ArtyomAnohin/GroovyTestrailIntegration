@@ -1,7 +1,11 @@
 {
-  "username": "<user_name>",
-  "password": "<password>",
-  "url": "https://<testrail_url>/",
-  "testcaseId": [<test_to_run>],
-  "assignedToId":<user_id>
+  "username": "xangel2008@gmail.com",
+  "password": "23/QguCvc0S3hBnSwrwP",
+  "url": "https://xangel.testrail.com/",
+  "testcaseIds": [
+    1,
+    2,
+    57
+  ],
+  "assignedToId":2
 }
